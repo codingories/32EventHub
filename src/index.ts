@@ -11,7 +11,7 @@ class EventHub {
     this.cache[eventName] = this.cache[eventName] || []
     this.cache[eventName].push(fn);
   }
-  emit(eventName, data){
+  emit(eventName, data?){
     // 把 this.cache[eventName] 数组里面的 fn 全部依次调用
     (this.cache[eventName] || []).forEach(fn => fn(data));
   }
