@@ -13,7 +13,15 @@ class EventHub {
     const array = this.cache[eventName];
     array.push(fn);
   }
-  emit(eventName){}
+  emit(eventName){
+    let array = this.cache[eventName];
+    if(array=== undefined){
+      array = []
+    }
+    array.forEach(fn => {
+      fn();
+    });
+  }
 }
 
 export default EventHub;
