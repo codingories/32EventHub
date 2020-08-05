@@ -1,13 +1,6 @@
 class EventHub {
-  cache = {};
-  // {
-  //  '楚天都市报': [fn1, fn2, fn3],
-  //  '羊城晚报' : [fn1, fn2, fn3]
-  // }
+  private cache = {}; // 表示只在代码内部可以访问
   on(eventName, fn){
-    // 把 fn 推进 this.cache[eventName] 数组
-    // eventName订报纸,fn报纸放到邮箱
-    // eventName = 楚天, fn
     this.cache[eventName] = this.cache[eventName] || [];
     this.cache[eventName].push(fn);
   }
@@ -25,6 +18,11 @@ class EventHub {
 
 export default EventHub;
 
+/**
+ * 帮助函数 indexOf
+ * @param array
+ * @param item
+ */
 function indexOf(array, item) {
   if(array === undefined) return -1;
   let index = -1;
