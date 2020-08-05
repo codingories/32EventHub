@@ -18,11 +18,13 @@ eventHub.emit("xxx", "今天天气不错");
 const eventHub2 = new EventHub();
 // 另一个完全不同的送报纸公司
 let called2 = false;
-eventHub.on("yyy", () => {
+const fn1 = () => {
   called2 = true;
-});
-eventHub.off("yyy");
+};
+eventHub.on("yyy", fn1);
+eventHub.off("yyy", fn1);
 eventHub.emit("yyy");
 setTimeout(()=>{
-  console.log(called);
+  console.log('1秒后');
+  console.log(called2);
 },1000);
